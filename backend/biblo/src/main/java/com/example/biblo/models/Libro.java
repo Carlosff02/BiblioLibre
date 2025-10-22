@@ -1,6 +1,7 @@
 package com.example.biblo.models;
 
 import com.example.biblo.dto.LibroDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +18,7 @@ public class Libro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idlibro;
     private String titulo;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "autor_id")
     private Autor autor;
     private String idioma;
@@ -25,6 +26,10 @@ public class Libro {
     private String imgSrc;
     private String textHtml;
     private String epub;
+    @ManyToOne
+    @JoinColumn(name = "idpagina")  // <-- nombre real de la FK en la tabla libro
+    @JsonIgnore
+    private PaginasGuardadas paginaGuardada;
 
 
 
