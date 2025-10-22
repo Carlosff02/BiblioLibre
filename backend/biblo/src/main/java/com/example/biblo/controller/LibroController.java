@@ -4,6 +4,7 @@ import com.example.biblo.dto.LibroDTO;
 import com.example.biblo.models.Libro;
 import com.example.biblo.service.LibroService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -27,9 +28,9 @@ public class LibroController {
         return libroService.buscarLibrosMasPopulares();
     }
 
-    @GetMapping("/buscar-por-idioma/{idioma}")
-    public List<Libro> buscarLibrosPorIdioma(@PathVariable String idioma) throws IOException, InterruptedException {
-        return libroService.buscarPorIdioma(idioma);
+    @GetMapping("/buscar-por-idioma")
+    public Page<Libro> buscarLibrosPorIdioma(@RequestParam String idioma, @RequestParam Integer page) throws IOException, InterruptedException {
+        return libroService.buscarPorIdioma(idioma, page);
     }
 
 }

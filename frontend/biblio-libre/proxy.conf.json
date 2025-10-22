@@ -1,0 +1,10 @@
+{
+  "/proxy-gutenberg": {
+    "target": "https://www.gutenberg.org",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/proxy-gutenberg": ""
+    }
+  }
+}

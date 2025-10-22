@@ -4,7 +4,7 @@
         <nav class="text-sm text-gray-500 mb-8">
             <a href="index.html" class="hover:text-indigo-600">Inicio</a> &gt;
             <a href="search.html" class="hover:text-indigo-600">Búsqueda</a> &gt;
-            <span class="font-semibold text-gray-700">Don Quijote de la Mancha</span>
+            <span class="font-semibold text-gray-700">{{libroVisualizado()?.titulo}}</span>
         </nav>
 
         <div class="bg-white p-8 rounded-xl shadow-lg">
@@ -15,7 +15,7 @@
                     <a class="w-full block text-center bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700
                     cursor-pointer
                     transition duration-300 text-lg shadow-md mb-3"
-                    (click)="visualizarEpub()"
+                    [routerLink]="['/busqueda/visor-epub', libroVisualizado()?.titulo]"
                     >Leer en línea</a>
                     <a href="#" class="w-full block text-center bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-lg hover:bg-gray-300 transition duration-300">Añadir a mi lista</a>
                 </div>
@@ -99,5 +99,5 @@
 
 
 
-  
+
 

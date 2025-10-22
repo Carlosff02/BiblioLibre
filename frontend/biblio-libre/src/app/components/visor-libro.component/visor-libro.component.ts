@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit, signal, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Libro } from '../../domain/models/libro';
 import { LibroService } from '../../infraestructure/services/libro.service';
 import ePub, { Book, Rendition } from 'epubjs';
 
 @Component({
   selector: 'app-visor-libro.component',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './visor-libro.component.html',
   styleUrl: './visor-libro.component.css'
 })
@@ -41,7 +41,7 @@ export class VisorLibroComponent implements OnInit{
   }
 
   visualizarEpub(){
-    
+
   }
 
 
