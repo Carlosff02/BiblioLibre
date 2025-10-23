@@ -21,6 +21,6 @@ public class PaginasGuardadas {
     private Long totalRegistros;
     private LocalDateTime fechaConsulta;
     private String fuente;
-    @OneToMany(mappedBy = "paginaGuardada", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "paginaGuardada", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<Libro> libros;
 }

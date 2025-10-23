@@ -6,6 +6,9 @@ export interface Libro{
   autor:Autor | null;
   descargas:number;
   imgSrc:string;
+  descripcion:string;
   textHtml:string;
   epub:string;
+  idioma:string;
+  categorias:string[]
 }

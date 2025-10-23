@@ -12,7 +12,7 @@ import ePub, { Book, Rendition } from 'epubjs';
 })
 export class VisorLibroComponent implements OnInit{
     titulo = '';
-
+    procesandoDatos = signal<boolean>(false);
     libroVisualizado = signal<Libro|null>(null);
 
     constructor(private route: ActivatedRoute,
@@ -26,13 +26,24 @@ export class VisorLibroComponent implements OnInit{
       this.buscarLibroPorTitulo()
   }
 
+ libroVisualizadoDescarga() {
+  return {
+    titulo: this.libroVisualizado()?.titulo,
+    textPlain: this.libroVisualizado()?.textHtml}
+  };
+
+
+
+
   buscarLibroPorTitulo(){
+    this.procesandoDatos.set(true);
     this.libroService.buscarPorNombre(this.titulo).subscribe({
       next:(res)=>{
         this.libroVisualizado.set(res);
+        this.procesandoDatos.set(false)
         console.log(res)
       }, error:(err)=>{
-
+        this.procesandoDatos.set(false)
         console.error(err)
       }
     })
@@ -43,6 +54,34 @@ export class VisorLibroComponent implements OnInit{
   visualizarEpub(){
 
   }
+  transformarIdiomaLibro(idioma: string | undefined): string {
+    if(idioma){
+  switch (idioma.toLowerCase()) {
+    case 'es': return 'Español';
+    case 'en': return 'Inglés';
+    case 'fr': return 'Francés';
+    case 'de': return 'Alemán';
+    case 'it': return 'Italiano';
+    case 'pt': return 'Portugués';
+    case 'nl': return 'Neerlandés';
+    case 'da': return 'Danés';
+    case 'sv': return 'Sueco';
+    case 'no': return 'Noruego';
+    case 'fi': return 'Finlandés';
+    case 'el': return 'Griego';
+    case 'la': return 'Latín';
+    case 'pl': return 'Polaco';
+    case 'ru': return 'Ruso';
+    case 'zh': return 'Chino';
+    case 'ja': return 'Japonés';
+    case 'ar': return 'Árabe';
+    case 'hu': return 'Húngaro';
+    case 'cs': return 'Checo';
+    default: return idioma; // por si no coincide, devuelve el valor original
+  }
+  }
+  return '';
+}
 
 
 

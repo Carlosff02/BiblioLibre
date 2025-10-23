@@ -33,4 +33,16 @@ public class LibroController {
         return libroService.buscarPorIdioma(idioma, page);
     }
 
+    @GetMapping("/buscar")
+    public Page<Libro> buscarLibros(
+            @RequestParam(required = false) String titulo,
+            @RequestParam(required = false) String autor,
+            @RequestParam(required = false) String idioma,
+            @RequestParam(defaultValue = "1") int page) throws IOException, InterruptedException {
+
+        return libroService.buscarLibros(titulo, autor, idioma, page);
+    }
+
+
+
 }

@@ -11,7 +11,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <!-- Book Cover and Main Actions -->
                 <div class="md:col-span-1 lg:col-span-1">
-                    <img [src]="libroVisualizado()?.imgSrc" alt="Portada de Don Quijote" class="w-full rounded-lg shadow-lg mb-6">
+                    <img [src]="libroVisualizado()?.imgSrc" alt="Portada de {{libroVisualizado()?.titulo}}" class="w-full rounded-lg shadow-lg mb-6">
                     <a class="w-full block text-center bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700
                     cursor-pointer
                     transition duration-300 text-lg shadow-md mb-3"
@@ -28,22 +28,22 @@
                     <div class="mb-8">
                         <h3 class="text-xl font-bold mb-3 text-gray-800">Sinopsis</h3>
                         <p class="text-gray-700 leading-relaxed">
-                            "En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor." Así comienza una de las obras cumbre de la literatura universal. La novela narra las aventuras de Alonso Quijano, un hidalgo pobre que de tanto leer novelas de caballería, acaba enloqueciendo y creyendo ser un caballero andante, nombrándose a sí mismo como Don Quijote de la Mancha.
+                          {{libroVisualizado()?.descripcion}}
                         </p>
                     </div>
 
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-8 text-sm">
                         <div>
                             <span class="font-semibold text-gray-500 block">IDIOMA</span>
-                            <span class="text-gray-800">Español</span>
+                            <span class="text-gray-800">{{transformarIdiomaLibro(libroVisualizado()?.idioma)}}</span>
                         </div>
                         <div>
                             <span class="font-semibold text-gray-500 block">PUBLICADO</span>
-                            <span class="text-gray-800">1605</span>
+                            <span class="text-gray-800">-</span>
                         </div>
                         <div>
                             <span class="font-semibold text-gray-500 block">GÉNERO</span>
-                            <span class="text-gray-800">Novela, Sátira</span>
+                            <span class="text-gray-800">{{ libroVisualizado()?.categorias?.[0] ?? '-' }}</span>
                         </div>
                     </div>
 
@@ -58,32 +58,32 @@
                                     <span class="font-semibold">EPUB3 (para e-readers)</span>
                                 </div>
                                 <div class="flex items-center">
-                                    <span class="text-gray-500 mr-4">2.8 MB</span>
+                                    <span class="text-gray-500 mr-4"></span>
                                     <a [href]="libroVisualizado()?.epub"
                                     target="_blank"
                                     class="bg-gray-100 p-2 rounded-full hover:bg-gray-200"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download-cloud"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg></a>
                                 </div>
                             </div>
                             <!-- Download Item -->
-                            <div class="download-item p-4 flex justify-between items-center border-b last:border-b-0 transition-colors">
+                            <!-- <div class="download-item p-4 flex justify-between items-center border-b last:border-b-0 transition-colors">
                                 <div class="flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone mr-3 text-indigo-500"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
                                     <span class="font-semibold">Kindle (con imágenes)</span>
                                 </div>
                                 <div class="flex items-center">
-                                    <span class="text-gray-500 mr-4">4.1 MB</span>
+                                    <span class="text-gray-500 mr-4"></span>
                                     <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download-cloud"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg></a>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- Download Item -->
                             <div class="download-item p-4 flex justify-between items-center border-b last:border-b-0 transition-colors">
                                 <div class="flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mr-3 text-indigo-500"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
-                                    <span class="font-semibold">Texto Plano (UTF-8)</span>
+                                    <span class="font-semibold">Text/HTML</span>
                                 </div>
                                 <div class="flex items-center">
-                                    <span class="text-gray-500 mr-4">1.2 MB</span>
-                                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download-cloud"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg></a>
+                                    <span class="text-gray-500 mr-4"></span>
+                                    <a [href]="libroVisualizado()?.textHtml" download class="bg-gray-100 p-2 rounded-full hover:bg-gray-200"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download-cloud"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg></a>
                                 </div>
                             </div>
                         </div>
@@ -96,6 +96,15 @@
 
 
     </main>
+<!-- Spinner de carga -->
+@if (procesandoDatos()) {
+  <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+    <div class="relative w-16 h-16">
+      <div class="absolute inset-0 rounded-full border-4 border-blue-500 border-t-transparent animate-spin"></div>
+      <div class="absolute inset-2 rounded-full border-4 border-t-blue-300 border-transparent animate-spin-slow"></div>
+    </div>
+  </div>
+}
 
 
 
