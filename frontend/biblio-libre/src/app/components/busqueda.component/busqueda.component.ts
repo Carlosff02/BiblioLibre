@@ -34,6 +34,7 @@ export class BusquedaComponent implements OnInit {
     this.buscarLibros();
   }
   // Prueba de Jira
+  // Prueba de Jira 2
   // 🔹 Método general de búsqueda
   buscarLibros() {
     this.procesandoDatos.set(true);
