@@ -16,7 +16,7 @@ import java.nio.file.StandardOpenOption;
 
 @RestController
 @RequestMapping("/api/visor-epub")
-@CrossOrigin("http://localhost:4200") // ✅ Solo este CORS es necesario
+@CrossOrigin("*") // ✅ Solo este CORS es necesario
 public class EpubProxyController {
 
     private final RestTemplate restTemplate = new RestTemplate();

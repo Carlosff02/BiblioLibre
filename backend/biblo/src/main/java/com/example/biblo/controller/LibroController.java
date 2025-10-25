@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/libros")
 @RequiredArgsConstructor
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("*")
 public class LibroController {
 
     private final LibroService libroService;

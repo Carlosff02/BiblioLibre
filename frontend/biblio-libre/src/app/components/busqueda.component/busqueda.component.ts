@@ -33,7 +33,7 @@ export class BusquedaComponent implements OnInit {
   ngOnInit(): void {
     this.buscarLibros();
   }
-
+  // Prueba de Jira
   // 🔹 Método general de búsqueda
   buscarLibros() {
     this.procesandoDatos.set(true);
