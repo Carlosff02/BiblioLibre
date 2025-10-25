@@ -497,20 +497,29 @@ public class LibroService {
 // 2️⃣ Idioma + Autor
         else if (StringUtils.hasText(idioma) && StringUtils.hasText(autor) && !StringUtils.hasText(titulo)) {
             Optional<List<Libro>> librosPorAutor = libroRepository.buscarPorIdiomaYAutor(idiomaQ, autorQ);
-            return construirPagina(librosPorAutor, page, pageSize);
+            System.out.println(librosPorAutor.isPresent());
+
+            if(librosPorAutor.isPresent() && !librosPorAutor.get().isEmpty()){
+                System.out.println(librosPorAutor.get());
+                return construirPagina(librosPorAutor, page, pageSize);
+            }
         }
 
 // 3️⃣ Idioma + Título
         else if (StringUtils.hasText(idioma) && !StringUtils.hasText(autor) && StringUtils.hasText(titulo)) {
             Optional<List<Libro>> librosPorTitulo = libroRepository.buscarPorIdiomaYTitulo(idiomaQ, tituloQ);
-            return construirPagina(librosPorTitulo, page, pageSize);
+            if(librosPorTitulo.isPresent()&&!librosPorTitulo.get().isEmpty()) {
+                return construirPagina(librosPorTitulo, page, pageSize);
+            }
         }
 
 // 4️⃣ Idioma + Autor + Título
         else if (StringUtils.hasText(idioma) && StringUtils.hasText(autor) && StringUtils.hasText(titulo)) {
             Optional<List<Libro>> librosPorAmbos =
                     libroRepository.buscarPorIdiomaAutorYTitulo(idiomaQ, tituloQ, autorQ);
-            return construirPagina(librosPorAmbos, page, pageSize);
+            if(librosPorAmbos.isPresent()&&!librosPorAmbos.isEmpty()) {
+                return construirPagina(librosPorAmbos, page, pageSize);
+            }
         }
 
 

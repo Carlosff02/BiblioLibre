@@ -1,3 +1,3 @@
 export const constants = {
-  apiUrl:'http://localhost:8080/api'
+  apiUrl:'https://f2p4xd37-8080.brs.devtunnels.ms/api'
 }
