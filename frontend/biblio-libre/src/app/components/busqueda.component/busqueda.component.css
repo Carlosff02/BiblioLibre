@@ -1,0 +1,86 @@
+/* animacion de aparicion y desvanecimiento para la paginacion*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInGlow {
+  0% {
+    opacity: 0;
+    filter: brightness(0.7);
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+.animate-fadeInGlow {
+  animation: fadeInGlow 0.6s ease-in-out;
+}
+
+@keyframes fadeInBlur {
+  0% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInBlur {
+  animation: fadeInBlur 0.6s ease-out;
+}
+
+/* animacion de carrousel*/
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-left {
+  animation: slideInLeft 0.4s ease-out;
+}
+
+.slide-right {
+  animation: slideInRight 0.4s ease-out;
+}
+
+
+
+
+

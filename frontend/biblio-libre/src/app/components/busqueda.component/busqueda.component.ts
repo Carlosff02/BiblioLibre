@@ -81,11 +81,17 @@ export class BusquedaComponent implements OnInit {
   }
   
   //metodo paginacion
+  animacion = '';
   cambiarPagina(nuevaPagina: number) {
     if (nuevaPagina < 1 || nuevaPagina > this.totalPaginas || nuevaPagina === this.page) return;
+    // Dirección de movimiento
+    this.animacion = nuevaPagina > this.page ? 'slide-right' : 'slide-left';
     this.page = nuevaPagina;
-    this.buscarLibros();
+
+    // Esperar un instante para que la animación se note
+    setTimeout(() => this.buscarLibros(), 200);
   }
+
 
   seleccionarIdioma(idioma: string) {
     if (this.idiomaSeleccionado === idioma) return;

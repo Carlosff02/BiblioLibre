@@ -86,48 +86,57 @@
           }
         </div>
 
-        <!-- Paginación -->
+        <!-- Paginación  nueva-->
+      <div class="animate-fadeInGlow animate-fadeInBlur">
         <nav class="mt-12 flex justify-center items-center select-none flex-wrap gap-2">
-          <!-- Botón anterior -->
-          <button
-            class="pagination-link w-10 h-10 border rounded-full flex items-center justify-center text-gray-600 hover:bg-indigo-500 hover:text-white disabled:opacity-40"
-            [disabled]="page === 1"
-            (click)="cambiarPagina(page - 1)"
-          >
-            ‹
-          </button>
+        <!-- Botón anterior -->
+        <button
+          class="w-10 h-10 border rounded-full flex items-center justify-center text-gray-600
+                hover:bg-indigo-500 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed
+                transition-all duration-300 ease-out transform hover:scale-110 hover:shadow-md active:scale-95"
+          [disabled]="page === 1"
+          (click)="cambiarPagina(page - 1)"
+        >
+      ‹
+        </button>
 
-          <!-- Números -->
-          <button
-            *ngFor="let p of paginasVisibles"
-            (click)="cambiarPagina(p)"
-            [ngClass]="{
-              'bg-indigo-600 text-white border-indigo-600': page === p,
-              'text-gray-600 hover:bg-indigo-500 hover:text-white': page !== p
-            }"
-            class="w-10 h-10 border rounded-full flex items-center justify-center font-semibold transition"
-          >
-            {{ p }}
-          </button>
+        <!-- Números -->
+        <button
+          *ngFor="let p of paginasVisibles"
+          (click)="cambiarPagina(p)"
+          [ngClass]="{
+            'bg-indigo-600 text-white border-indigo-600 shadow-md scale-110': page === p,
+            'text-gray-600 hover:bg-indigo-500 hover:text-white': page !== p
+          }"
+          class="w-10 h-10 border rounded-full flex items-center justify-center font-semibold
+                transition-all duration-300 ease-out transform hover:scale-110 hover:shadow-md active:scale-95"
+        >
+        {{ p }}
+        </button>
 
-          <!-- Última página -->
-          <button
-            *ngIf="totalPaginas > maxVisible && paginasVisibles[paginasVisibles.length-1] < totalPaginas"
-            (click)="cambiarPagina(totalPaginas)"
-            class="w-10 h-10 border rounded-full flex items-center justify-center font-semibold text-gray-600 hover:bg-indigo-500 hover:text-white"
+        <!-- Última página -->
+        <button
+          *ngIf="totalPaginas > maxVisible && paginasVisibles[paginasVisibles.length-1] < totalPaginas"
+          (click)="cambiarPagina(totalPaginas)"
+          class="w-10 h-10 border rounded-full flex items-center justify-center font-semibold text-gray-600
+                hover:bg-indigo-500 hover:text-white transition-all duration-300 ease-out transform
+                hover:scale-110 hover:shadow-md active:scale-95"
           >
-            {{ totalPaginas }}
-          </button>
+          {{ totalPaginas }}
+        </button>
 
-          <!-- Botón siguiente -->
-          <button
-            class="pagination-link w-10 h-10 border rounded-full flex items-center justify-center text-gray-600 hover:bg-indigo-500 hover:text-white disabled:opacity-40"
-            [disabled]="page === totalPaginas"
-            (click)="cambiarPagina(page + 1)"
-          >
-            ›
-          </button>
-        </nav>
+        <!-- Botón siguiente -->
+        <button
+          class="w-10 h-10 border rounded-full flex items-center justify-center text-gray-600
+                hover:bg-indigo-500 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed
+                transition-all duration-300 ease-out transform hover:scale-110 hover:shadow-md active:scale-95"
+          [disabled]="page === totalPaginas"
+          (click)="cambiarPagina(page + 1)"
+        >
+          ›
+        </button>
+      </nav>
+    </div>
       </div>
     } @else {
       <!-- Mensaje si no hay resultados -->
