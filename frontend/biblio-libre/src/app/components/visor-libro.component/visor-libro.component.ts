@@ -33,27 +33,29 @@ export class VisorLibroComponent implements OnInit{
   };
 
 
+ //Lógica de visualización y búsqueda
 
-
-  buscarLibroPorTitulo(){
-    this.procesandoDatos.set(true);
-    this.libroService.buscarPorNombre(this.titulo).subscribe({
-      next:(res)=>{
-        this.libroVisualizado.set(res);
-        this.procesandoDatos.set(false)
-        console.log(res)
-      }, error:(err)=>{
-        this.procesandoDatos.set(false)
-        console.error(err)
+ buscarLibroPorTitulo(){
+    this.procesandoDatos.set(true);
+    this.libroService.buscarPorNombre(this.titulo).subscribe({
+      next:(res)=>{
+        this.libroVisualizado.set(res);
+        console.log(res);
+      }, 
+      error:(err)=>{
+        console.error(err);
+      },
+     
+      complete: () => {
+         this.procesandoDatos.set(false);
       }
-    })
-
-
-  }
+    }); 
+}
 
   visualizarEpub(){
 
   }
+  //Transformación de datos
   transformarIdiomaLibro(idioma: string | undefined): string {
     if(idioma){
   switch (idioma.toLowerCase()) {
