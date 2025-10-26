@@ -79,7 +79,8 @@ export class BusquedaComponent implements OnInit {
     this.paginasVisibles = [];
     for (let i = start; i <= end; i++) this.paginasVisibles.push(i);
   }
-
+  
+  //metodo paginacion
   cambiarPagina(nuevaPagina: number) {
     if (nuevaPagina < 1 || nuevaPagina > this.totalPaginas || nuevaPagina === this.page) return;
     this.page = nuevaPagina;
