@@ -29,7 +29,7 @@ export class BusquedaComponent implements OnInit {
   paginasVisibles: number[] = [];
 
   constructor(private libroService: LibroService) {}
-
+  // Probando uno dos
   ngOnInit(): void {
     this.buscarLibros();
   }
