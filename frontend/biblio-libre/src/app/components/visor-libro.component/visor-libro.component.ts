@@ -33,7 +33,7 @@ export class VisorLibroComponent implements OnInit{
   };
 
 
-
+ //Lógica de visualización y búsqueda
 
   buscarLibroPorTitulo(){
     this.procesandoDatos.set(true);
@@ -54,6 +54,7 @@ export class VisorLibroComponent implements OnInit{
   visualizarEpub(){
 
   }
+  //Transformación de datos
   transformarIdiomaLibro(idioma: string | undefined): string {
     if(idioma){
   switch (idioma.toLowerCase()) {
