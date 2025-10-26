@@ -1,10 +1,12 @@
 package com.example.biblo.models;
 
 import com.example.biblo.dto.AutorDTO;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="autor")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,13 +64,5 @@ public class Autor {
         this.fechafallecimiento = fechafallecimiento;
     }
 
-    @Override
-    public String toString() {
-        return "Autor{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", fechanacimiento='" + fechanacimiento + '\'' +
-                ", fechafallecimiento='" + fechafallecimiento + '\'' +
-                '}';
-    }
+
 }

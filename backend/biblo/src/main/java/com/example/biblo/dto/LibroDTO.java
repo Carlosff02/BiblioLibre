@@ -11,8 +11,10 @@ public record LibroDTO(
         @JsonAlias("title") String titulo,
         @JsonAlias("languages") List<String> idioma,
         @JsonAlias("download_count") Integer descargas,
+        @JsonAlias("summaries") List<String> summaries,
+        @JsonAlias("subjects") List<String> categorias,
+        @JsonAlias("bookshelves") List<String> estantes,
         @JsonAlias("authors") List<AutorDTO> autor,
-        @JsonAlias("formats")
-        Formats formatos
+        @JsonAlias("formats") Formats formatos
                        ) {
 }
